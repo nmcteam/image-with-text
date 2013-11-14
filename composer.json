@@ -1,0 +1,22 @@
+{
+    "name": "nmcteam/image-with-text",
+    "type": "library",
+    "description": "Create images with embedded text and advanced typography",
+    "keywords": ["text","typeset","typography","write","image","gd"],
+    "homepage": "http://github.com/nmcteam/image-with-text",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Josh Lockhart",
+            "email": "josh@newmediacampaigns.com",
+            "homepage": "http://www.newmediacampaigns.com/about/team/josh-lockhart"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "intervention/image": "dev-master"
+    },
+    "autoload": {
+        "psr-0": { "NMC": "src" }
+    }
+}
