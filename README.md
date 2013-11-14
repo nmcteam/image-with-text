@@ -63,6 +63,11 @@ directory.
     $image->startX = 40;
     $image->startY = 40;
 
+    // Add available lines with number of characters for each line
+    $image->addLine(25);
+    $image->addLine(30);
+    $image->addLine(23);
+
     // Render image
     $imageDestination = dirname(__FILE__) . '/destination.jpg';
     $image->render($imageDestination);
