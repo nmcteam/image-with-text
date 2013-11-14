@@ -47,7 +47,7 @@ namespace NMC\ImageWithText;
  *
  * You can align text left, center, or right. Use the `startX` and `startY` variables
  * to position the text. If you use left or center alignment, these coordinates
- * represent the top-left position of the text bonding box. If you use right
+ * represent the top-left position of the text bounding box. If you use right
  * alignment, these coordinates represent the top-right position of the text bounding box.
  *
  * [Style]
@@ -247,7 +247,7 @@ class ImageWithText
     /**
      * Parse text, allocate to available lines
      * @param  string     $text The custom message
-     * @throws \Exception If text is too long for card
+     * @throws \Exception If text is too long for available lines
      */
     protected function parseText()
     {

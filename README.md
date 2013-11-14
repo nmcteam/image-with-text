@@ -29,13 +29,15 @@ a custom font, you must specify the path to a TTF or OTF font.
 
 ## Installation
 
-Install this library with [Composer](). Add this to your `composer.json` file:
+Install this library with [Composer](http://getcomposer.org). Add this to your `composer.json` file:
 
     {
         "require": {
             "nmcteam/image-with-text": "~1.0.0"
         }
     }
+
+Then run `composer install`.
 
 ## Usage
 
@@ -77,5 +79,9 @@ We have not written any unit tests just yet, but we hope to do that soon.
 [Josh Lockhart](http://www.newmediacampaigns.com/about/team/josh-lockhart)
 
 ## Copyright
+
+(c) 2013 New Media Campaigns
+
+## License
 
 MIT
