@@ -14,9 +14,8 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "intervention/image": "dev-master"
+        "intervention/image": "~1.0"
     },
-    "minimum-stability": "dev",
     "autoload": {
         "psr-0": { "NMC": "src" }
     }
