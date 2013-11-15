@@ -1,31 +1,9 @@
 # Image with Text
 
-This class makes it super easy to render images with custom overlayed text.
-You can control the text color, alignment, font size, font family, and line height.
-Adjust the `startX` and `startY` coordinates to position the rendered text.
-
-## Lines
-
-You must define available lines and the maximum characters allowed on each line.
-Use the `addLine()` or `addLines()` methods to do so.
-
-## Alignment
-
-You can align text left, center, or right. Use the `startX` and `startY` variables
-to position the text. If you use left or center alignment, these coordinates
-represent the top-left position of the text bounding box. If you use right
-alignment, these coordinates represent the top-right position of the text bounding box.
-
-## Style
-
-You can use any of these variables to format your embedded text. If you specify
-a custom font, you must specify the path to a TTF or OTF font.
-
-* textColor
-* textSize
-* textFont
-* textAlign
-* textLineHeight
+This class makes it super easy to render images with multiple, independently styled
+text blocks. You can control each text block's alignment, color, font, line height, and size.
+You may also position each text block with specific X and Y coordinates relative to the
+source image.
 
 ## Installation
 
@@ -48,29 +26,33 @@ directory.
     require '../vendor/autoload.php';
 
     // Create image
-    $imageSource = dirname(__FILE__) . '/source.jpg';
-    $imageText = "Thanks for using our image text PHP library!";
-    $image = new \NMC\ImageWithText\ImageWithText($imageSource, $imageText);
+    $image = new \NMC\ImageWithText\Image(dirname(__FILE__) . '/source.jpg');
 
-    // Image styles
-    $image->textAlign = 'center';
-    $image->textColor = '000000';
-    $image->textFont = dirname(__FILE__) . '/Ubuntu-Medium.ttf';
-    $image->textLineHeight = 36;
-    $image->textSize = 24;
+    // Add styled text to image
+    $text1 = new \NMC\ImageWithText\Text('Thanks for using our image text PHP library!', 3, 25);
+    $text1->align = 'left';
+    $text1->color = 'FFFFFF';
+    $text1->font = dirname(__FILE__) . '/Ubuntu-Medium.ttf';
+    $text1->lineHeight = 36;
+    $text1->size = 24;
+    $text1->startX = 40;
+    $text1->startY = 40;
+    $image->addText($text1);
 
-    // Image offset
-    $image->startX = 40;
-    $image->startY = 40;
-
-    // Add available lines with number of characters for each line
-    $image->addLine(25);
-    $image->addLine(30);
-    $image->addLine(23);
+    // Add another styled text to image
+    $text2 = new \NMC\ImageWithText\Text('No, really, thanks!', 1, 30);
+    $text2->align = 'left';
+    $text2->color = '000000';
+    $text2->font = dirname(__FILE__) . '/Ubuntu-Medium.ttf';
+    $text2->lineHeight = 20;
+    $text2->size = 14;
+    $text2->startX = 40;
+    $text2->startY = 140;
+    $image->addText($text2);
 
     // Render image
-    $imageDestination = dirname(__FILE__) . '/destination.jpg';
-    $image->render($imageDestination);
+    $image->render(dirname(__FILE__) . '/destination.jpg');
+
 
 ## How to Contribute
 

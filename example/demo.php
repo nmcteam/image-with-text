@@ -2,26 +2,29 @@
 require '../vendor/autoload.php';
 
 // Create image
-$imageSource = dirname(__FILE__) . '/source.jpg';
-$imageText = 'Thanks for using our image text PHP library!';
-$image = new \NMC\ImageWithText\ImageWithText($imageSource, $imageText);
+$image = new \NMC\ImageWithText\Image(dirname(__FILE__) . '/source.jpg');
 
-// Image styles
-$image->textAlign = 'center';
-$image->textColor = 'FFFFFF';
-$image->textFont = dirname(__FILE__) . '/Ubuntu-Medium.ttf';
-$image->textLineHeight = 36;
-$image->textSize = 24;
+// Add styled text to image
+$text1 = new \NMC\ImageWithText\Text('Thanks for using our image text PHP library!', 3, 25);
+$text1->align = 'left';
+$text1->color = 'FFFFFF';
+$text1->font = dirname(__FILE__) . '/Ubuntu-Medium.ttf';
+$text1->lineHeight = 36;
+$text1->size = 24;
+$text1->startX = 40;
+$text1->startY = 40;
+$image->addText($text1);
 
-// Image offset
-$image->startX = 40;
-$image->startY = 40;
-
-// Add available lines
-$image->addLine(25);
-$image->addLine(30);
-$image->addLine(23);
+// Add another styled text to image
+$text2 = new \NMC\ImageWithText\Text('No, really, thanks!', 1, 30);
+$text2->align = 'left';
+$text2->color = '000000';
+$text2->font = dirname(__FILE__) . '/Ubuntu-Medium.ttf';
+$text2->lineHeight = 20;
+$text2->size = 14;
+$text2->startX = 40;
+$text2->startY = 140;
+$image->addText($text2);
 
 // Render image
-$imageDestination = dirname(__FILE__) . '/destination.jpg';
-$image->render($imageDestination);
+$image->render(dirname(__FILE__) . '/destination.jpg');
