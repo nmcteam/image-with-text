@@ -6,7 +6,7 @@
  * @copyright   2013 Josh Lockhart
  * @link        https://github.com/nmcteam/image-with-text
  * @license     MIT
- * @version     2.0.0
+ * @version     2.0.2
  *
  * MIT LICENSE
  *
@@ -187,32 +187,34 @@ class Text
         // Calculate line offsets
         for ($i = 0; $i < count($this->lines); $i++) {
             // Fetch line
-            $line = $this->lines[$i];
+            if (array_key_exists($i, $this->lines)) {
+                $line =& $this->lines[$i];
 
-            // Calculate line width in pixels
-            $lineBoundingBox = imagettfbbox($this->size, 0, $this->font, $line['text']);
-            $lineWidth = abs($lineBoundingBox[0] - $lineBoundingBox[2]); // (lower left corner, X position) - (lower right corner, X position)
+                // Calculate line width in pixels
+                $lineBoundingBox = imagettfbbox($this->size, 0, $this->font, $line['text']);
+                $lineWidth = abs($lineBoundingBox[0] - $lineBoundingBox[2]); // (lower left corner, X position) - (lower right corner, X position)
 
-            // Calculate line X,Y offsets in pixels
-            switch ($this->align) {
-                case 'left':
-                    $offsetX = $this->startX;
-                    $offsetY = $this->startY + $this->lineHeight + ($this->lineHeight * $i);
-                    break;
-                case 'center':
-                    $imageWidth = $image->getWidth();
-                    $offsetX = (($maxLineWidth - $lineWidth) / 2) + $this->startX;
-                    $offsetY = $this->startY + $this->lineHeight + ($this->lineHeight * $i);
-                    break;
-                case 'right':
-                    $imageWidth = $image->getWidth();
-                    $offsetX = $imageWidth - $line['width'] - $this->startX;
-                    $offsetY = $this->startY + $this->lineHeight + ($this->lineHeight * $i);
-                    break;
+                // Calculate line X,Y offsets in pixels
+                switch ($this->align) {
+                    case 'left':
+                        $offsetX = $this->startX;
+                        $offsetY = $this->startY + $this->lineHeight + ($this->lineHeight * $i);
+                        break;
+                    case 'center':
+                        $imageWidth = $image->getWidth();
+                        $offsetX = (($maxLineWidth - $lineWidth) / 2) + $this->startX;
+                        $offsetY = $this->startY + $this->lineHeight + ($this->lineHeight * $i);
+                        break;
+                    case 'right':
+                        $imageWidth = $image->getWidth();
+                        $offsetX = $imageWidth - $line['width'] - $this->startX;
+                        $offsetY = $this->startY + $this->lineHeight + ($this->lineHeight * $i);
+                        break;
+                }
+
+                // Render text onto image
+                $image->getImage()->text($line['text'], $offsetX, $offsetY, $this->size, $this->color, 0, $this->font);
             }
-
-            // Render text onto image
-            $image->getImage()->text($line['text'], $offsetX, $offsetY, $this->size, $this->color, 0, $this->font);
         }
     }
 

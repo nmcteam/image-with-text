@@ -6,7 +6,7 @@
  * @copyright   2013 Josh Lockhart
  * @link        https://github.com/nmcteam/image-with-text
  * @license     MIT
- * @version     2.0.0
+ * @version     2.0.2
  *
  * MIT LICENSE
  *

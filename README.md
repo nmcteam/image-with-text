@@ -11,7 +11,7 @@ Install this library with [Composer](http://getcomposer.org). Add this to your `
 
     {
         "require": {
-            "nmcteam/image-with-text": "~2.0.0"
+            "nmcteam/image-with-text": "~2.0"
         }
     }
 
