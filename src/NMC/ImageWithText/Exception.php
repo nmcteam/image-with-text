@@ -37,5 +37,5 @@ namespace NMC\ImageWithText;
  * @author Younès El Biache
  * @since  1.0.0
  */
-class Exception extends Exception {}
+class Exception extends \Exception {}
 
