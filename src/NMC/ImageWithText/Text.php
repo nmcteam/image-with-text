@@ -220,7 +220,7 @@ class Text
 
     /**
      * Distribute text to lines
-     * @throws \Exception If text is too long given available lines and max character width
+     * @throws Exception If text is too long given available lines and max character width
      */
     protected function distributeText()
     {
@@ -251,7 +251,7 @@ class Text
 
         // Throw if too long
         if ($tooLong === true) {
-            throw new \Exception('Text is too long');
+            throw new Exception('Text is too long');
         }
     }
 }
