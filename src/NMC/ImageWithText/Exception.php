@@ -38,3 +38,4 @@ namespace NMC\ImageWithText;
  * @since  1.0.0
  */
 class Exception extends Exception {}
+
