@@ -61,6 +61,13 @@ class Image
      */
     public $image;
 
+
+    /**
+     * String
+     * @var $sourceImagePath
+     */
+    protected $sourceImagePath;
+
     /**
      * Text objects
      * @var array[\NMC\ImageWithText\Text]
@@ -72,9 +79,10 @@ class Image
      * @param string $sourceImage Path to source image
      * @api
      */
-    public function __construct($sourceImage)
+    public function __construct($path)
     {
-        $this->image = \Intervention\Image\Image::make($sourceImage);
+        $this->sourceImagePath = $path;
+        $this->image = \Intervention\Image\Image::make($path);
     }
 
     /**
@@ -102,10 +110,10 @@ class Image
      * @param string $outputImagePath The path to which the image (with text) will be saved
      * @api
      */
-    public function render($outputImagePath)
-    {
+    public function render($outputImagePath = null)
+    {   
         $this->drawText();
-        $this->image->save($outputImagePath);
+        $this->image->save($outputImagePath ?: $this->sourceImagePath);
     }
 
     /**
@@ -126,3 +134,4 @@ class Image
         return $this->image;
     }
 }
+
