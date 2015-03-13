@@ -235,6 +235,12 @@ class Text
             for ($i = 0; $i < count($this->lines); $i++) {
                 $line =& $this->lines[$i];
                 if ($line['full'] === false) {
+                    // Check for NewLine char. If found put this on the next line.
+                    if($word=="\n"){
+                         $line['full'] = true;
+                         break;
+                     }
+                     
                     $charsPotential = strlen($word) + $line['chars'];
 
                     if ($charsPotential <= $this->width) {
