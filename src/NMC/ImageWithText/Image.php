@@ -31,6 +31,8 @@
  */
 namespace NMC\ImageWithText;
 
+use Intervention\Image\ImageManager;
+
 /**
  * Image
  *
@@ -74,7 +76,8 @@ class Image
      */
     public function __construct($sourceImage)
     {
-        $this->image = \Intervention\Image\Image::make($sourceImage);
+        $manager = new ImageManager(array('driver' => 'gd'));
+        $this->image = $manager->make($sourceImage);
     }
 
     /**
@@ -114,7 +117,7 @@ class Image
      */
     public function getWidth()
     {
-        return imagesx($this->image->resource);
+        return imagesx($this->image->getCore());
     }
 
     /**
